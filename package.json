@@ -1,0 +1,21 @@
+{
+  "name": "CSE120-2021",
+  "version": "1.0.0",
+  "description": "AUA CSE120 - 2021",
+  "main": "index.html",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [
+    "AUA",
+    "Donations"
+  ],
+  "author": "AUA Students",
+  "dependencies": {
+    "express": "^4.9.8",
+    "body-parser": "^1.19.0"
+  },
+  "engines": {
+    "node": "10.x"
+  }
+}
