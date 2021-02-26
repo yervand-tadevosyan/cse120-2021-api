@@ -6,7 +6,7 @@ function saveData() {
 
     $.ajax({
         type: 'POST',
-        url: "/data",
+        url: "https://cse120-2021-api.herokuapp.com/data",
         data: tmp,
         cache: false,
         dataType : 'json',
@@ -23,14 +23,14 @@ function saveData() {
 }
 
 function loadExistingData() {
-	var donations = [];
+	var data = [];
     $.ajax({
         type : "GET",
-        url : "/data",
+        url : "https://cse120-2021-api.herokuapp.com/data",
         dataType : "json",
         success : function(data) {
         	console.log("success", data);
-            donations = data.donations;
+            data = data;
         },
         error : function(data) {
             console.log("Error")
