@@ -3,6 +3,12 @@ const bodyParser  = require('body-parser');
 const port = process.env.PORT || 3001;
 const app = express();
 const cors = require('cors');
+const { MongoClient } = require("mongodb");
+
+const uri =
+  "mongodb+srv://cse120-2021-user:aua-gened-cse120@cse120-2021.zmhgf.mongodb.net/test";
+
+const client = new MongoClient(uri);
 
 var dbPath = 'db.json';
 var fs = require('fs');
@@ -40,13 +46,32 @@ app.post('/', function (req, res) {
 })
 
 app.get('/data', function (req, res) {
-  res.send({"data":db_json});
+  //res.send({"data":db_json});
+  client.connect()
+  .then(client => {
+    client.db('cse120-2021-db').collection('books').find().toArray()
+      .then(results => {
+        console.log(results)
+        res.send({"data":results});
+      })
+      .catch(error => console.error(error))
+  })
+  .catch(console.error)
 })
 
 app.post('/data', function (req, res) {
 	db_json.push(req.body);
 	fs.writeFileSync(dbPath, JSON.stringify(db_json));
-	res.send({"message":"Added"});
+  client.connect()
+  .then(client => {
+    client.db('cse120-2021-db').collection('books').insertOne(req.body)
+      .then(result => {
+        console.log(result)
+        res.send({"message":"Added"});
+      })
+      .catch(error => console.error(error))
+  })
+  .catch(console.error)
 })
 
 app.listen(port, function () {
