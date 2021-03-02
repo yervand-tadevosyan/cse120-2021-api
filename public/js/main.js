@@ -51,7 +51,14 @@ function displayData(data) {
                 span.appendChild(b);
                 
                 span.className = "item";
-                span.innerHTML += (elem[key] || "N/A");
+                if (elem[key]) {
+                    span.innerHTML += elem[key];
+                } else {
+                    span1 = document.createElement("span");
+                    span1.className = "undefined";
+                    span1.innerHTML = "N/A";
+                    span.appendChild(span1)
+                }
                 item.appendChild(span);
 
                 br = document.createElement("br");

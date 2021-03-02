@@ -16,3 +16,7 @@ span.item {
 span.item b {
 	margin-right: 10px;
 }
+
+span.undefined {
+	color: red;
+}
