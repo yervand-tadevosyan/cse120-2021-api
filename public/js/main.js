@@ -23,17 +23,42 @@ function saveData() {
 }
 
 function loadExistingData() {
-	var data = [];
     $.ajax({
         type : "GET",
         url : "https://cse120-2021-api.herokuapp.com/data",
         dataType : "json",
         success : function(data) {
         	console.log("success", data);
-            data = data;
+            displayData(data.data);
         },
         error : function(data) {
             console.log("Error")
         }
     });
+}
+
+function displayData(data) {
+    document.getElementById("dataContainer").innerHTML = "";
+    data.forEach(elem => {
+        var item = document.createElement("div");
+        item.className = "item";
+        Object.keys(elem).forEach(key => {
+            if (key != "_id") {
+                span = document.createElement("span");
+
+                b = document.createElement("b");
+                b.innerHTML = key + ": ";
+                span.appendChild(b);
+                
+                span.className = "item";
+                span.innerHTML += (elem[key] || "N/A");
+                item.appendChild(span);
+
+                br = document.createElement("br");
+                item.appendChild(br);
+            }
+        })
+        document.getElementById("dataContainer").appendChild(item);
+    })
+
 }

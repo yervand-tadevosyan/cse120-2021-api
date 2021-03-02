@@ -75,7 +75,7 @@ app.post('/data', function (req, res) {
 })
 
 app.listen(port, function () {
-    console.log('Example app listening on port 8080!')
+    console.log('Example app listening on port 3001!')
     load_db_data();
 })
 
