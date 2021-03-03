@@ -14,7 +14,7 @@ function deleteData(id) {
 
     $.ajax({
         type: 'POST',
-        url: "/data/delete",
+        url: "https://cse120-2021-api.herokuapp.com/data/delete",
         data: tmp,
         cache: false,
         dataType : 'json',
