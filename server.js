@@ -4,20 +4,12 @@ const port = process.env.PORT || 3001;
 const app = express();
 const cors = require('cors');
 const { MongoClient } = require("mongodb");
+const ObjectId = require('mongodb').ObjectId; 
 
 const uri =
   "mongodb+srv://cse120-2021-user:aua-gened-cse120@cse120-2021.zmhgf.mongodb.net/test";
 
 const client = new MongoClient(uri);
-
-var dbPath = 'db.json';
-var fs = require('fs');
-
-var db_json = [];
-
-load_db_data = function() {
-    db_json = JSON.parse(fs.readFileSync(dbPath, 'utf8'));
-};
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static('public'));
@@ -46,7 +38,6 @@ app.post('/', function (req, res) {
 })
 
 app.get('/data', function (req, res) {
-  //res.send({"data":db_json});
   client.connect()
   .then(client => {
     client.db('cse120-2021-db').collection('books').find().toArray()
@@ -60,8 +51,6 @@ app.get('/data', function (req, res) {
 })
 
 app.post('/data', function (req, res) {
-	db_json.push(req.body);
-	fs.writeFileSync(dbPath, JSON.stringify(db_json));
   client.connect()
   .then(client => {
     client.db('cse120-2021-db').collection('books').insertOne(req.body)
@@ -74,9 +63,23 @@ app.post('/data', function (req, res) {
   .catch(console.error)
 })
 
+app.post('/data/delete', function (req, res) {
+  client.connect()
+  .then(client => {
+    let id = req.body.id;
+    const query = { "_id": ObjectId(id)};
+    client.db('cse120-2021-db').collection('books').deleteOne(query)
+      .then(result => {
+        console.log(result.deletedCount)
+        res.send({"deleted":result.deletedCount});
+      })
+      .catch(error => console.error(error))
+  })
+  .catch(console.error)
+})
+
 app.listen(port, function () {
     console.log('Example app listening on port 3001!')
-    load_db_data();
 })
 
 app.get('*', function(req, res) {
