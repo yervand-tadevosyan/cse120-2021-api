@@ -1,7 +1,7 @@
 
 function deleteData(id) {
 
-    var r = confirm("Are you sure you want tto delete the item with the following ID? " + id);
+    var r = confirm("Are you sure you want to delete the item with the following ID? " + id);
     if (r == true) {
       
     } else {
@@ -20,6 +20,7 @@ function deleteData(id) {
         dataType : 'json',
         success: function (data) {
             console.log("success");
+            document.getElementById("div" + id).style.display = "none";
         },
         error: function (xhr) {
             console.error("Error in post", xhr);
@@ -72,6 +73,7 @@ function displayData(data) {
     document.getElementById("dataContainer").innerHTML = "";
     data.forEach(elem => {
         var item = document.createElement("div");
+        item.id = "div" + elem["_id"];
         item.className = "item";
         if (Object.keys(elem).length == 1) {
             var span = document.createElement("span");
