@@ -15,6 +15,10 @@ div.item button {
 	right: 10px;
 }
 
+div.item button.edit {
+	right: 70px;
+}
+
 span.item {
 	line-height: 16px;
 	font-size: 14px;
