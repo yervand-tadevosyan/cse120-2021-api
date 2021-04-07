@@ -51,7 +51,6 @@ app.get('/data', function (req, res) {
 })
 
 app.post('/data', function (req, res) {
-  //ToDo: Please replace this with Edit/Update code
   client.connect()
   .then(client => {
     client.db('cse120-2021-db').collection('books').insertOne(req.body)
@@ -65,6 +64,7 @@ app.post('/data', function (req, res) {
 })
 
 app.post('/data/update', function (req, res) {
+   //ToDo: Please replace this with Edit/Update code
   client.connect()
   .then(client => {
     let id = req.body.id;
