@@ -70,10 +70,10 @@ app.post('/data/update', function (req, res) {
     let id = req.body.id;
     let newValue = req.body.value;
     const query = { "_id": ObjectId(id)};
-    client.db('cse120-2021-db').collection('books').insertOne(req.body)
+    client.db('cse120-2021-db').collection('books').update(query,{$set: req.body})
       .then(result => {
         console.log(result)
-        res.send({"message":"Added"});
+        res.send({"message":"Updated"});
       })
       .catch(error => console.error(error))
   })
