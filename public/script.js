@@ -199,7 +199,7 @@ if(validateFormData() == false){
 function updateData(e) {
   e.preventDefault();
   var updatedBook = {};
-  /*updatedBook.id = document.getElementById("_idBook").value;*/
+  updatedBook.id = document.getElementById("_idBook").value;
   updatedBook.fullname = document.getElementById("fullnameBook").value;
   updatedBook.title = document.getElementById("titleBook").value;
   updatedBook.author = document.getElementById("authorBook").value;
