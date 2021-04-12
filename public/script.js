@@ -197,28 +197,47 @@ if(validateFormData() == false){
 }
 
 function updateData(e) {
-e.preventDefault();
-if(validateFormData() == false){
-  return;
-}else{
-  console.log(myBook);
+  e.preventDefault();
+  var updatedBook = {};
+  /*updatedBook.id = document.getElementById("_idBook").value;*/
+  updatedBook.fullname = document.getElementById("fullnameBook").value;
+  updatedBook.title = document.getElementById("titleBook").value;
+  updatedBook.author = document.getElementById("authorBook").value;
+  updatedBook.color = document.getElementById("colorBook").value;
+  updatedBook.covertype = document.getElementById("coverBook").value;
+  updatedBook.numofpages = document.getElementById("numofpagesBook").value;
+  updatedBook.price = document.getElementById("priceBook").value;
+  updatedBook.currency = document.getElementById("currencyBook").value;
+  updatedBook.language = document.getElementById("languageBook").value;
+  updatedBook.origLanguage = document.getElementById("origlanguageBook").value;
+  updatedBook.dimensions = document.getElementById("dimensionsBook").value; 
+  updatedBook.publisher = document.getElementById("publisherBook").value; 
+  updatedBook.publishingdate = document.getElementById("publishingdateBook").value;
+  updatedBook.origpublishingdate = document.getElementById("origpublishingdateBook").value;
+  updatedBook.genre = document.getElementById("genreBook").value;
+  updatedBook.age = document.getElementById("agerestrictionBook").value;
+  updatedBook.edition = document.getElementById("editionBook").value;
+  if(validateFormData() == false){
+    return;
+  }else{
+    console.log(myBook);
 
-    $.ajax({
-    type: 'POST',
-    url: "https://cse120-2021-api-yervand.herokuapp.com/data/update",
-    data: myBook,
-    cache: false,
-    dataType : 'json',
-    success: function (data) {
-      console.log("success");
-    },
-    error: function (xhr) {
-      console.error("Error in post", xhr);
-    },
-    complete: function () {
-      console.log("Complete");  
-    }
-  });
+      $.ajax({
+      type: 'POST',
+      url: "https://cse120-2021-api-yervand.herokuapp.com/data/update",
+      data: updatedBook,
+      cache: false,
+      dataType : 'json',
+      success: function (data) {
+        console.log("success");
+      },
+      error: function (xhr) {
+        console.error("Error in post", xhr);
+      },
+      complete: function () {
+        console.log("Complete");  
+      }
+    });
   }
 }
 
@@ -384,7 +403,7 @@ function loadBookEditItem() {
   localStorage = window.localStorage;
   editItem = JSON.parse(localStorage.getItem("editItem"));
   console.log(editItem);
-  /*document.getElementById("_idBook").innerHTML = editItem["_id"];*/
+ /* document.getElementById("_idBook").value = editItem["_idBook"];*/
   document.getElementById("titleBook").value = editItem["title"];
   document.getElementById("fullnameBook").value = editItem["fullname"];
   document.getElementById("authorBook").value = editItem["author"]; 
@@ -409,7 +428,7 @@ function loadTennisEditItem(){
   localStorage = window.localStorage;
   editItem = JSON.parse(localStorage.getItem("editItem"));
   console.log(editItem);
- /* document.getElementById("_idTennis").innerHTML = editItem["_id"];*/
+ /* document.getElementById("_idTennis").value = editItem["_idTennis"];*/
   document.getElementById("fullnameTennis").value = editItem["fullname"];
   document.getElementById("emailTennis").value = editItem["email"];
   document.getElementById("preferTennis").value = editItem["preference"];
