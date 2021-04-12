@@ -202,7 +202,7 @@ function updateData(e) {
   updatedBook.id = document.getElementById("_idBook").value;
   updatedBook.fullname = document.getElementById("fullnameBook").value;
   updatedBook.title = document.getElementById("titleBook").value;
-  updatedBook.author = document.getElementById("authorBook").value;
+  /*updatedBook.author = document.getElementById("authorBook").value;
   updatedBook.color = document.getElementById("colorBook").value;
   updatedBook.covertype = document.getElementById("coverBook").value;
   updatedBook.numofpages = document.getElementById("numofpagesBook").value;
@@ -216,7 +216,7 @@ function updateData(e) {
   updatedBook.origpublishingdate = document.getElementById("origpublishingdateBook").value;
   updatedBook.genre = document.getElementById("genreBook").value;
   updatedBook.age = document.getElementById("agerestrictionBook").value;
-  updatedBook.edition = document.getElementById("editionBook").value;
+  updatedBook.edition = document.getElementById("editionBook").value;*/
   if(validateFormData() == false){
     return;
   }else{
