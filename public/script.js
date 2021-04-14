@@ -27,22 +27,6 @@ var myBook = {
   "edition" : ""
 }
 
-var hobbyTennis = {
-  "fullname" : "",
-  "email" : "",
-  "preference" : "",
-  "favplayer" : "",
-  "favretiredplayer" : "",
-  "playorwatch" : "",
-  "menorwomen" : "",
-  "why" : "",
-  "days" : "",
-  "hours" : "",
-  "racket" : [],
-  "strengths" : [],
-  "favtournament" : ""
-
-}
 
 function handleFullnameChange() {
   myBook.fullname = document.getElementById("fullname").value;
@@ -155,17 +139,127 @@ function handleAgeChange() {
 function handleEditionChnage() {
   myBook.edition = document.getElementById("edition").value;
 }
+/*____________________________________________TENNIS PART ____________________________________________*/
+var requiredFieldsTennis = [
+  "fullname", "email"
+]
 
+var hobbyTennis = {
+  "project" : "Tennis",
+  "owner" : "Yervand Tadevosyan",
+  "fullname" : "",
+  "email" : "",
+  "preference" : "",
+  "favplayer" : "",
+  "favretiredplayer" : "",
+  "playorwatch" : "",
+  "menorwomen" : "",
+  "why" : "",
+  "days" : "",
+  "hours" : "",
+  "racket" : [],
+  "strengths" : [],
+  "favtournament" : ""
+
+}
+
+function handleFullNameTennisChange() {
+  hobbyTennis.fullname = document.getElementById("fullname").value;
+}
+
+function handleEmailChange() {
+  hobbyTennis.email = document.getElementById("email").value;
+}
+
+function handlePreferenceChange(e) {
+  hobbyTennis.preference = e.target.value;
+  if(hobbyTennis.preference == "BigTennis") {
+    hobbyTennis.preference = document.getElementById("BigTennis").value;
+  }
+  else{
+    hobbyTennis.preference = document.getElementById("TableTennis").value;
+  }
+  
+ }
+
+function handleFavplayerChange() {
+  hobbyTennis.favplayer = document.getElementById("favplayer").value;
+}
+
+function handleFavretiredplayerChange() {
+  hobbyTennis.favretiredplayer = document.getElementById("favretiredplayer").value;
+}
+
+function handlePlayOrWatchChange(select) {
+  hobbyTennis.playorwatch = select.value;
+
+}
+
+function handleMenorWomenChange(select) {
+  hobbyTennis.menorwomen = select.value;
+}
+
+
+function handleWhyChange() {
+  hobbyTennis.why = document.getElementById("why").value;
+}
+
+function handleDaysChange() {
+  hobbyTennis.days = document.getElementById("days").value;
+}
+
+function handleHoursChange() {
+  hobbyTennis.hours = document.getElementById("hours").value;
+}
+
+
+
+function handleRacketChange(e) {
+  if(e.target.checked){
+     hobbyTennis.racket.push(e.target.value);
+  }else{
+    hobbyTennis.racket.splice(hobbyTennis.racket.indexOf(e.target.value),1);
+  }
+}
+
+function handleStrengthsChange(e){
+  if(e.target.checked){
+    hobbyTennis.strengths.push(e.target.value);
+  }else{
+    hobbyTennis.strengths.splice(hobbyTennis.strengths.indexOf(e.target.value),1);
+  }
+}
+
+function handleFavTournamentChange(e) {
+  hobbyTennis.favtournament = e.target.value;
+  if(hobbyTennis.favtournament == "wimbledon") {
+    hobbyTennis.favtournament = document.getElementById("wimbledon").value;
+  }
+  else if(hobbyTennis.favtournament == "usopen"){
+    hobbyTennis.favtournament = document.getElementById("usopen").value;
+  }
+  else if(hobbyTennis.favtournament == "australianopen") {
+    hobbyTennis.favtournament = document.getElementById("australianopen").value;
+  }
+  else if(hobbyTennis.favtournament == "frenchopen") {
+    hobbyTennis.favtournament = document.getElementById("frenchopen").value;
+  }
+}
+
+
+/* _______________________________________Server and Admin Part_____________________________________ */
 function validateFormData() {
   var isFormValid = true;
   var keys = Object.keys(myBook);
   keys.forEach(key => {
       if (requiredFields.indexOf(key) > -1 && myBook[key] == "") { console.log(key, " is a required field, please add a value") 
+      if (requiredFieldsTennis.indexOf(key) > -1 && hobbyTennis[key] == "") { console.log(key, " is a required field, please add a value")
       if(document.getElementById(key)) {
         document.getElementById(key).style.backgroundColor = "yellow"; 
         isFormValid = false;
-      }
-    }   
+          }
+        } 
+    }  
   })
   return isFormValid;
 }
@@ -196,13 +290,39 @@ if(validateFormData() == false){
   }
 }
 
+function saveDataTennis(e) {
+e.preventDefault();
+if(validateFormData() == false){
+  return;
+}else{
+  console.log(hobbyTennis);
+
+    $.ajax({
+    type: 'POST',
+    url: "https://cse120-2021-api-yervand.herokuapp.com/data",
+    data: hobbyTennis,
+    cache: false,
+    dataType : 'json',
+    success: function (data) {
+      console.log("success");
+    },
+    error: function (xhr) {
+      console.error("Error in post", xhr);
+    },
+    complete: function () {
+      console.log("Complete");  
+    }
+  });
+  }
+}
+
 function updateData(e) {
   e.preventDefault();
   var updatedBook = {};
   updatedBook.id = document.getElementById("_idBook").value;
   updatedBook.fullname = document.getElementById("fullnameBook").value;
   updatedBook.title = document.getElementById("titleBook").value;
-  /*updatedBook.author = document.getElementById("authorBook").value;
+  updatedBook.author = document.getElementById("authorBook").value;
   updatedBook.color = document.getElementById("colorBook").value;
   updatedBook.covertype = document.getElementById("coverBook").value;
   updatedBook.numofpages = document.getElementById("numofpagesBook").value;
@@ -216,7 +336,8 @@ function updateData(e) {
   updatedBook.origpublishingdate = document.getElementById("origpublishingdateBook").value;
   updatedBook.genre = document.getElementById("genreBook").value;
   updatedBook.age = document.getElementById("agerestrictionBook").value;
-  updatedBook.edition = document.getElementById("editionBook").value;*/
+  updatedBook.edition = document.getElementById("editionBook").value;
+  
   if(validateFormData() == false){
     return;
   }else{
@@ -403,7 +524,7 @@ function loadBookEditItem() {
   localStorage = window.localStorage;
   editItem = JSON.parse(localStorage.getItem("editItem"));
   console.log(editItem);
-  document.getElementById("_idBook").value = editItem["_idBook"];
+  document.getElementById("_idBook").value = editItem["_id"];
   document.getElementById("titleBook").value = editItem["title"];
   document.getElementById("fullnameBook").value = editItem["fullname"];
   document.getElementById("authorBook").value = editItem["author"]; 
@@ -428,7 +549,7 @@ function loadTennisEditItem(){
   localStorage = window.localStorage;
   editItem = JSON.parse(localStorage.getItem("editItem"));
   console.log(editItem);
-  document.getElementById("_idTennis").value = editItem["_idTennis"];
+  document.getElementById("_idTennis").value = editItem["_id"];
   document.getElementById("fullnameTennis").value = editItem["fullname"];
   document.getElementById("emailTennis").value = editItem["email"];
   document.getElementById("preferTennis").value = editItem["preference"];
