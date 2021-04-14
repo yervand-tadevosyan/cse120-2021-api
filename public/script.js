@@ -362,6 +362,50 @@ function updateData(e) {
   }
 }
 
+function updateDataTennis(e) {
+  e.preventDefault();
+  var updatedTennis = {};
+  updatedTennis.id = document.getElementById("_idTennis").value;
+  updatedTennis.fullname = document.getElementById("fullnameTennis").value;
+  updatedTennis.email = document.getElementById("emailTennis").value;
+  updatedTennis.preference = document.getElementById("preferTennis").value;
+  updatedTennis.favplayer = document.getElementById("favplayerTennis").value;
+  updatedTennis.favretiredplayer = document.getElementById("favretiredplayerTennis").value;
+  updatedTennis.playorwatch = document.getElementById("playorwatchTennis").value;
+  updatedTennis.menorwomen = document.getElementById("menorwomenTennis").value;
+  updatedTennis.why = document.getElementById("whyTennis").value;
+  updatedTennis.days = document.getElementById("daysTennis").value;
+  updatedTennis.hours = document.getElementById("hoursTennis").value;
+  updatedTennis.racket = document.getElementById("racketTennis").value;
+  updatedTennis.strengths = document.getElementById("strengthsTennis").value;
+  updatedTennis.favtournament = document.getElementById("tournamentTennis").value;
+
+  if(validateFormData() == false){
+    return;
+  }else{
+    console.log(myBook);
+
+      $.ajax({
+      type: 'POST',
+      url: "https://cse120-2021-api-yervand.herokuapp.com/data/update",
+      data: updatedTennis,
+      cache: false,
+      dataType : 'json',
+      success: function (data) {
+        console.log("success");
+      },
+      error: function (xhr) {
+        console.error("Error in post", xhr);
+      },
+      complete: function () {
+        console.log("Complete");  
+      }
+    });
+  }
+}
+
+
+
 
 
 
@@ -389,7 +433,7 @@ function loadExistingData() {
           })
           displayData(myTennisData, "tennisDataContainer");
           displayData(myBookData, "bookDataContainer");
-          displayData(otherData, "otherDataContainer");
+         /* displayData(otherData, "otherDataContainer");*/
         },
         error : function(data) {
             console.log("Error")
@@ -456,10 +500,10 @@ function displayData(data, containerDivName) {
 
       document.querySelectorAll("#tennisDataContainer div.item").forEach(div => {
       div.addEventListener("click", function(e){
-        if (this.style.height == "auto") {
-          this.style.height = "30px";
-        } else {
+        if (this.style.height == "30px") {
           this.style.height = "auto";
+        } else {
+          this.style.height = "30px";
         }
       })        
     })
