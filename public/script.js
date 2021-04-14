@@ -403,7 +403,7 @@ function loadBookEditItem() {
   localStorage = window.localStorage;
   editItem = JSON.parse(localStorage.getItem("editItem"));
   console.log(editItem);
- /* document.getElementById("_idBook").value = editItem["_idBook"];*/
+  document.getElementById("_idBook").value = editItem["_idBook"];
   document.getElementById("titleBook").value = editItem["title"];
   document.getElementById("fullnameBook").value = editItem["fullname"];
   document.getElementById("authorBook").value = editItem["author"]; 
@@ -428,7 +428,7 @@ function loadTennisEditItem(){
   localStorage = window.localStorage;
   editItem = JSON.parse(localStorage.getItem("editItem"));
   console.log(editItem);
- /* document.getElementById("_idTennis").value = editItem["_idTennis"];*/
+  document.getElementById("_idTennis").value = editItem["_idTennis"];
   document.getElementById("fullnameTennis").value = editItem["fullname"];
   document.getElementById("emailTennis").value = editItem["email"];
   document.getElementById("preferTennis").value = editItem["preference"];
