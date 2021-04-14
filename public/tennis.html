@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>repl.it</title>
+    <link href="tennis.css" rel="stylesheet" type="text/css" />
+    <script
+			src="https://code.jquery.com/jquery-3.5.1.min.js"
+			integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+			crossorigin="anonymous"></script>
+  </head>
+  <body>
+
+    <i><h1>Survey for Tennis Lovers</h1></i>
+    
+      <form>
+        <div class="form">
+          <label for="fullname">Full Name: <sup>*</sup></label><br>
+          <input type="text" id="fullname" placeholder="Your answer" onblur="handleFullNameTennisChange()" required>
+        </div>
+
+        <div class ="form">
+          <label for="email"> Your email address <sup>*</sup> </label> <br>  
+          <input type="email" id="email" placeholder="Your email address" onblur = "handleEmailChange()" required> 
+        </div>
+
+        <div class="form">
+          <label for="preference">What tennis do you prefer: Big tennis or table tennis ? <sup>*</sup></label><br>
+          <div class="radioinputs">
+            <input type="radio" id="BigTennis" name="preference" value = "BigTennis" onchange="handlePreferenceChange(event)" required>
+            <label for="BigTennis">Big Tennis</label><br>
+          </div>
+          <div class="radioinputs">
+            <input type="radio" id="TableTennis" name="preference" value="TableTennis" onchange="handlePreferenceChange(event)" required>
+            <label for="TableTennis">Table Tennis</label><br>
+          </div> 
+        </div>
+
+        <div class="form">
+          <label for="favplayer">Who is your favourite tennis player  ?</label><sup>*</sup><br>
+          <input type="text" id="favplayer" placeholder="Your answer" onblur = "handleFavplayerChange()" required>
+        </div>
+         
+        <div class="form">
+          <label for="favretiredplayer">Who is your favourite retired tennis player ?</label><sup>*</sup><br>
+          <input type="text" id="favretiredplayer" placeholder="Your answer" onblur = "handleFavretiredplayerChange()" required>
+        </div> 
+
+        <div class="form">
+          <label for="playorwatch" >Do you prefer playing or watching the game ? </label><sup>*</sup><br>
+          <select onchange="handlePlayOrWatchChange(this)" required > 
+            <option value="Playing" id = "Playing"> Playing </option>
+            <option value="Watching" id = "Watching"> Watching </option>
+          </select> 
+        </div>
+        
+        <div class="form">
+          <label for="menorwomen">Do you prefer watching Men's tennis or Women's ? Why ?</label><sup>*</sup><br>
+          <select onchange="handleMenorWomenChange(this)" required> 
+            <option value="Men" id = "Men"> Men </option>
+            <option value="Women" id="Women"> Women </option>
+          </select> <br>
+          <input type="text" id="why" placeholder="Why ?" onblur="handleWhyChange()" required>
+        </div>
+
+        <div class="form">
+          <label for="days">How many days do you train and how many hours? </label><sup>*</sup> <br>
+          <input type="number" id="days" placeholder="Number of Days" min = "1" max = "7" onblur="handleDaysChange()" required> <br>
+          <input type="number" id="hours" placeholder="Number of Hours" min = "1" max = "6" onblur="handleHoursChange()" required>
+        </div>
+
+        <div class="form">
+          <label for="racket">What tennis rackets do you prefer ?</label ><sup>*</sup><br>
+          <input type="checkbox" id="adidas" name="racket" value="adidas" onclick="handleRacketChange(event)">
+          <label for="adidas">Adidas</label> <br>
+          <input type="checkbox" id="babolar" name="racket" value="babolar" onclick="handleRacketChange(event)">
+          <label for="babolar">Babolar</label> <br>
+          <input type="checkbox" id="nike" name="racket" value="nike" onclick="handleRacketChange(event)">
+          <label for="nike">Nike</label> <br>
+          <input type="checkbox" id="asics" name="racket" value="asics" onclick="handleRacketChange(event)"> 
+          <label for="asics">Asics</label> <br>
+          <input type="checkbox" id="wilson" name="racket" value="wilson" onclick="handleRacketChange(event)"> 
+          <label for="wilson">Wilson</label>
+        </div>
+
+        <div class="form">
+          <label for="strength">What are your strengths ?</label><sup>*</sup><br>
+          <input type="checkbox" id ="forehand" name="strength" value="forehand"
+          onclick="handleStrengthsChange(event)">
+          <label for="forehand">Forehand</label> <br>
+          <input type="checkbox" id="backhand" name="strength" value="backhand"
+          onclick="handleStrengthsChange(event)">
+          <label for="backhand">Backhand</label> <br>
+          <input type="checkbox" id = "serve" name="strength" value="serve"
+          onclick="handleStrengthsChange(event)"> 
+          <label for="serve">Serve</label> 
+        </div>
+        
+        <div class="form">
+          <label for="tournament">What is your favourtite tournament ?</label><sup>*</sup><br>
+          <div class="radioinputs">
+            <input type="radio" id="wimbledon" value="wimbledon" name="tournament" onchange="handleFavTournamentChange(event)" required>            
+            <label for="wimbledon">Wimbledon</label><br>
+          </div>
+          <div class="radioinputs">
+            <input type="radio" id="usopen" value="usopen" name="tournament" onchange="handleFavTournamentChange(event)" required>
+            <label for="usopen">US Open</label><br>
+          </div>
+          <div class="radioinputs">
+            <input type="radio" id="australianopen" value="australianopen" name="tournament" onchange="handleFavTournamentChange(event)" required>
+            <label for="australianopen">Australian Open</label><br>
+          </div>
+          <div class="radioinputs">
+            <input type="radio" id="frenchopen" value="frenchopen" name="tournament" onchange="handleFavTournamentChange(event)" required>
+            <label for="frenchopen">French Open</label><br>
+          </div>
+        </div>
+
+        <div id="submit">
+           <button type = "submit" onclick="saveDataTennis(event)">Submit</button>
+        </div>
+      
+        <script src="script.js"></script>
+
+      </form>
+  </body>
+</html>

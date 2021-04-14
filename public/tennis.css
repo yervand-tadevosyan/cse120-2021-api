@@ -1,0 +1,120 @@
+body{
+  background-image: url(https://cdn.pixabay.com/photo/2017/03/05/19/52/grass-2119587_1280.jpg);
+}
+
+h1{
+  color:rgb(187, 253, 255);
+  margin:auto;
+  margin-top:30px;
+  text-align: center;
+  border-radius:10px;
+}
+
+form{
+  margin:auto;
+}
+
+.form{
+  font-size:20px;
+  margin-top: 10px;
+  height:auto;
+  padding: 15px;
+  border-radius: 10px;
+  color: rgb(255, 255, 255);
+  border-style: solid;
+  border-color: white;
+  box-shadow: 2px 2px 2px 2px white;
+  border-width: thin;
+}
+
+input[type=text], [type=email] {
+  margin-top:20px;
+  border-style: none;
+  border-bottom-style:dotted;
+  padding: 7px;
+}
+
+select{
+  margin-top:15px;
+  padding:10px;
+  border-radius: 10px;
+  font-size:15px;
+}
+
+option{
+  color:white;
+  background-color: rgb(20, 184, 91);
+}
+
+sup{
+  color:orangered;
+  font-size: 25px;
+}
+
+#days,#hours{
+  width: 21.5%;
+}
+
+.radioinputs{
+  margin-top: 15px;
+  font-size: 20px;
+}
+
+.radioinputs:hover{
+   color:rgb(239, 255, 8);
+}
+
+.radioinputs:active{
+  color:red;
+}
+
+#submit{
+  margin-top:10px;
+  text-align: center;
+}
+button{
+  font-size:25px;  
+  background-color:  rgb(7, 155, 71);
+  color:white;
+  border-radius:15px;
+}
+button:hover{
+  background-color:white;
+  color:rgb(7, 155, 71);
+}
+
+
+/*----------------------------------admin----------------------------------=--*/
+div.item {
+  
+	min-width: 200px;
+	width: 20%;
+	height: 500px;
+	background-color: greenyellow;
+	float: left;
+	margin: 10px;
+	padding: 10px;
+	position: relative;
+}
+
+div.item button {
+	position: absolute;
+	bottom: 10px;
+	right: 10px;
+}
+
+
+
+span.item {
+	line-height: 16px;
+	font-size: 14px;
+}
+
+span.item b {
+	margin-right: 10px;
+}
+
+span.undefined {
+	color: red;
+}
+
