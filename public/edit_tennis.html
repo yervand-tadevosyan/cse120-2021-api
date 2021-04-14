@@ -13,7 +13,7 @@
   </head> 
   <body style="background-color: rgb(240, 235, 248)" onload="loadTennisEditItem()">
     <label>ID</label>
-    <input type="text" id="_idTennis"><br>
+    <input type="text" id="_idTennis" readonly><br>
     <label>Fullname</label>
     <input type="text" id="fullnameTennis">
     <label> Email Adress </label>
@@ -40,5 +40,8 @@
     <input type="text" id="strengthsTennis"><br>
     <label> favourite Tournament</label>
     <input type="text" id="tournamentTennis">
+
+    <button type = "submit" onclick="updateData(event)">Submit</button>
+
   </body>
 </html>
