@@ -75,7 +75,10 @@ app.post('/data/update', function (req, res) {
         console.log(result)
         res.send({"message":"Updated"});
       })
-      .catch(error => console.error(error))
+      .catch(error => {
+        console.error(error);
+        res.send({"message":"Failed"});
+      })
   })
   .catch(console.error)
 })
