@@ -1,150 +1,22 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
-    <title>Book</title>
-    <link href="style.css" rel="stylesheet" type="text/css" />
-    <script
-			src="https://code.jquery.com/jquery-3.5.1.min.js"
-			integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
-			crossorigin="anonymous"></script>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <title>Dashboard</title>
+        <link rel="stylesheet" href="style.css">
+        <script
+        src="https://code.jquery.com/jquery-3.5.1.min.js"
+        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+        crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <div class = "dashboard">
+            <label for="">Yervand's Project Dashboard</label>
+        </div>
 
-  </head>
-  <body>
-    
-    <div class="main">
-      <form action="">
-        <div class = "inputDiv">
-          <label  class="appearance" >Your Name <sup>*</sup></label><br>
-          <input type="text" placeholder="Short answer text" id="fullname" name="fullname" class="boxapp" onblur="handleFullnameChange()">
-        </div>
-        <div class = "inputDiv">
-          <label class="appearance">Title of the Book<sup>*</sup></label><br>
-          <input type="text"  placeholder="Short answer text" id="title" name="title" class="boxapp" onblur="handleTitleChange()">
-        </div>
-        <div class = "inputDiv">
-          <label class="appearance">Author<sup>*</sup></label><br>
-          <input type="text" placeholder="Short answer text" id="author" name="author" class="boxapp" onblur="handleAuthorChange()"> 
-        </div>
-        <div class = "inputDiv">
-          <label class="appearance">Color</label><br>
-          <input type="color" id="color" name="color" class="boxapp" onblur="handleColorChange()">
-        </div>
-        <div class = "inputDiv">
-          <label for="cover" class="appearance">Cover Type<sup>*</sup></label><br> 
-          <div class="radioInputs">  
-            <input type="radio" id="paperback" name="cover"  value = "paperback" onchange="handleCoverTypeChange(event)">
-            <label for="paperback">Paperback</label><br>
-          </div>
-          <div class="radioInputs">
-            <input type="radio" id="hardcover" name="cover" value = "hardcover" onchange="handleCoverTypeChange(event)" >
-            <label for="hardcover">Hardcover</label><br>
-          </div>
-          <div class="radioInputs">
-            <input type="radio" id="other" name="cover" value = "other" onchange="handleCoverTypeChange(event)"> 
-            <label for="otherCoverValue">Other</label> 
-            <input type="text" id="otherCoverValue" onblur="handleCoverMaterialchange()" placeholder="Your Answer" >
-          </div>
-        </div>
-        <div class = "inputDiv">
-          <span class="appearance">Number of Pages<sup>*</sup></label><br>
-          <input type="text"  placeholder="Short answer text" id="numofpages" name="numofpages" class="boxapp" onblur="handleNumofPagesChange()">
-        </div>
-        <div class = "inputDiv">
-          <label class="appearance">Price</label><br>
-          <input type="text"  placeholder="Short answer text" id="price" name="price" class="boxapp" onblur="handlePriceChange()">
-        </div>
-        <div class = "inputDiv">
-          <span class="appearance">Currency</label><br>
-          <input type="text"  placeholder="Short answer text" id="currency" name="currency" class="boxapp" onblur="handleCurrencyChange()">  
-        </div>
-        <div class = "inputDiv">
-          <label class="appearance">Language</label><br>
-        <div class="radioInputs"> 
-          <input type="radio" name="language" id="armenian" value="armenian"  onchange="handleLanguageChange(event)">
-          <label for="armenian">Armenian</label>
-        </div>
-        <div class="radioInputs">
-          <input type="radio" name="language" id="russian" value="russian" onchange="handleLanguageChange(event)">
-          <label for="russian">Russian</label>
-        </div>
-        <div class="radioInputs">
-          <input type="radio" name="language" id="english" value="english" onchange="handleLanguageChange(event)">
-          <label for="english">English</label>
-        </div>
-        <div class="radioInputs">
-          <input type="radio" name="language" id="otherlang" value="otherlang" onchange="handleLanguageChange(event)">
-          <label for="otherLanguageValue">Other</label>
-          <input type="text" id="otherLanguageValue" onblur="handleOtherLanguageChange()" placeholder="Your Answer" >
-        </div>
-        </div>
-        
-        <div class = "inputDiv">
-          <label  class="appearance">Original Language<sup>*</sup></label><br>
-          <div class="radioInputs">
-            <input type="radio" id="english2" name="originalLang" value="english2" onchange="handleOrigLanguageChange(event)">
-            <label for="english2">English</label>
-          </div>
-          <div class="radioInputs">
-            <input type="radio" id="russian2" name="originalLang" value="russian2" onchange="handleOrigLanguageChange(event)">
-            <label for="russian2">Russian</label>
-          </div>
-          <div class="radioInputs">
-            <input type="radio" id="german" name="originalLang" value="german" onchange="handleOrigLanguageChange(event)">
-            <label for="german">German</label>
-          </div>
-          <div class="radioInputs">
-            <input type="radio" id="french" name="originalLang" value="french" onchange="handleOrigLanguageChange(event)">
-            <label for="french">French</label>
-          </div>
-          <div class="radioInputs">
-            <input type="radio" id="chinese" name="originalLang" value="chinese" onchange="handleOrigLanguageChange(event)">
-            <label for="chinese">Chinese</label>
-          </div>
-          <div class="radioInputs">
-            <input type="radio" name="originalLang" id="originalLang" value="otheroriglang" onchange="handleOrigLanguageChange(event)">
-            <label for="otherOrigLanguageValue">Other</label>
-            <input type="text" id="otherOrigLanguageValue" onblur="handleOtherOrigLanguageChange()" placeholder="Your Answer" >
-          </div>
-        </div>
-        
-        <div class = "inputDiv">
-          <span class="appearance">Dimensions</span><br>
-          <input type="text"  placeholder="Short answer text" id="dimensions" name="dimensions" class="boxapp" onblur="handleDimensionsChange()">
-        </div>
-        <div class = "inputDiv">
-          <label for="publisher" class="appearance">Publisher</label><br>
-          <input type="text" placeholder="Short answer text" id="publisher" name="publisher" class="boxapp" onblur="handlePublisherChange()">
-        </div>
-      <div class = "inputDiv">
-          <label for="date" class="appearance">Publishsing Date</label><br>
-          <input type="date" id="date" name="date" class="boxapp" onblur="handlePublishingDateChange()">
-      </div>
-        <div class = "inputDiv">
-          <label for="origdate" class="appearance">Original Publishing Date:</label><br>
-          <input type="date" id="origdate" name="origdate" class="boxapp" onblur="handleOrigPublishingDateChange()">
-        </div>
-        <div class = "inputDiv">
-          <label for="genre" class="appearance">Genre<sup>*</sup></span><br>
-         <input type="text" name="genre" placeholder="Short answer text" id="genre" class="boxapp" onblur="handleGenreChange()">
-        </div>
-        <div class = "inputDiv">
-          <label for="age" class="appearance">Age Restriction</label><br>
-          <input type="text"  placeholder="Short answer text" id="age" name="age" class="boxapp" onblur="handleAgeChange()">
-        </div>
-        <div class = "inputDiv">
-          <label for="edition" class="appearance">Edition</label><br>
-          <input type="text"  placeholder="Short answer text" id="edition" name="edition" class="boxapp" onblur="handleEditionChnage()">
-        </div> 
-        
-        <div id="button">
-          <button type = "submit" onclick="saveData(event)">Submit</button>
-        </div>
-        
-      </form>
-      <script src="script.js"></script>
-      </div>
-    
-  </body>
+        <a href="https://cse120-2021-api-yervand.herokuapp.com/book.html">Click to visit rhe book survey</a><br>
+        <a href="https://cse120-2021-api-yervand.herokuapp.com/tennis.html">Click to visit rhe tennis survey </a> <br>
+        <a href="https://cse120-2021-api-yervand.herokuapp.com/admin.html">Click to go to admin Pages</a>
+    </body>
 </html>
